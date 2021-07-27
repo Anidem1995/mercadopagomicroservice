@@ -1,16 +1,12 @@
-module.exports = app => {
-    const router = require('express').Router();
-    const mercadoPago = require('../controllers/mercado-pago.js');
+var express = require('express');
+var mercadoPago = require('../controllers/mercado-pago.js');
+var router = express.Router();
 
-    app.use((req, res, next) => {
-        res.header('Access-Control-Allow-Origin', '*');
-        res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
-        res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-        res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
-        next();
-    });
+router.use(function timeLog(req, res, next) {
+    console.log('Time: ', Date.now());
+    next();
+});
 
-    router.post('/enviar', mercadoPago.enviarPago);
+router.post('/enviar', mercadoPago.enviarPago);
 
-    app.use('pagos', router);
-};
+module.exports = router;
