@@ -14,6 +14,7 @@ exports.enviarPago = (req, res) => {
         payer: {
             email: req.body.payer.email,
             identification: {
+                type: req.body.identification_type,
                 number: req.body.docNumber
             }
         }
