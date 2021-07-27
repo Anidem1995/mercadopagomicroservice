@@ -1,6 +1,6 @@
 module.exports = app => {
     const mercadoPago = require('../controllers/mercado-pago.js');
-    var router = express.Router();
+    var router = require('express').Router()
 
     app.use((req, res, next) => {
         res.header('Access-Control-Allow-Origin', '*');
@@ -11,4 +11,6 @@ module.exports = app => {
     });
 
     router.post('/enviar', mercadoPago.enviarPago);
+
+    app.use('/pagos', router);
 };
