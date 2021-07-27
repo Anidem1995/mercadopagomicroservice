@@ -2,6 +2,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const pagos = require('./app/routes/routes.js');
+const cors = require("cors");
 const express = require('express');
 
 dotenv.config();
@@ -25,7 +26,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Server is up and running" });
 });
 
-  const PORT = process.env.PORT || 8000;
+  const PORT = process.env.PORT || 8080;
   const TZ = process.env.TZ || 'America/Mexico_City';
 
   app.listen(PORT, () => {
