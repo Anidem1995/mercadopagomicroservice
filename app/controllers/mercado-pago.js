@@ -5,12 +5,12 @@ mercadopago.configurations.setAccessToken(process.env.PROD_ACCESS_TOKEN);
 
 exports.enviarPago = (req, res) => {
     const payment_data = {
-        transaction_amount: Number(req.body.transactionAmount),
         token: req.body.token,
-        description: req.body,description,
+        issuer_id: req.body.issuer_id,
+        payment_method_id: req.body.payment_method_id,
+        transaction_amount: Number(req.body.transaction_amount),
         installments: Number(req.body.installments),
-        payment_method_id: req.body.paymentMethodId,
-        issuer_id: req.body.issuer,
+        description: req.body,description,
         payer: {
             email: req.body.payer.email,
             identification: {
