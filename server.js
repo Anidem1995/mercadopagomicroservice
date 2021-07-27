@@ -21,6 +21,10 @@ app.use(express.json());
 
 app.use('/pagos', pagos);
 
+app.get("/", (req, res) => {
+  res.json({ message: "Server is up and running" });
+});
+
   const PORT = process.env.PORT || 8000;
   const TZ = process.env.TZ || 'America/Mexico_City';
 
